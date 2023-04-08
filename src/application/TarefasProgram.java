@@ -52,7 +52,7 @@ public class TarefasProgram {
 	}
 	
 	public static void imprimirMenu() {
-		System.out.println("----- Menu -----\n");
+		System.out.println("\n----- Menu -----\n");
 		System.out.println("1 - Adicionar Tarefas");
 		System.out.println("2 - Consultar Tarefas");
 		System.out.println("3 - Atualizar Tarefas");
@@ -67,22 +67,32 @@ public class TarefasProgram {
 		Scanner sc = new Scanner(System.in);
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 
-		System.out.print("Informe o nome da Tarefa: ");
-		String nomeTareda = sc.nextLine();
+		boolean execucaoMenuAdicionar = true;
+		while (execucaoMenuAdicionar) {
+			System.out.print("Informe o nome da Tarefa: ");
+			String nomeTareda = sc.nextLine();
 
-		System.out.print("Prioridade da Tarefa: ");
-		int prioridadeTarefa = sc.nextInt();
+			System.out.print("Prioridade da Tarefa: ");
+			int prioridadeTarefa = sc.nextInt();
 
-		Date dataDaTarefa = new Date();
+			Date dataDaTarefa = new Date();
 
-		System.out.print("Informe o prazo para concluir a Tarefa (dd/MM/yyyy): ");
-		String dataConclusao = sc.next();
-		Date dataConclusaoTarefa = sdf.parse(dataConclusao);
+			System.out.print("Informe o prazo para concluir a Tarefa (dd/MM/yyyy): ");
+			String dataConclusao = sc.next();
+			Date dataConclusaoTarefa = sdf.parse(dataConclusao);
 
-		System.out.println("---------------------");
-		System.out.println("Nome Tarefa: " + nomeTareda);
-		System.out.println("Prioridade da Tarefa: " + prioridadeTarefa);
-		System.out.println("Data de criação: " + sdf.format(dataDaTarefa));
-		System.out.println("Dias para Conclusão: " + sdf.format(dataConclusaoTarefa));
+			System.out.println("\n-------- Atividade Adicionada --------");
+			System.out.println("Nome Tarefa: " + nomeTareda);
+			System.out.println("Prioridade da Tarefa: " + prioridadeTarefa);
+			System.out.println("Data de criação: " + sdf.format(dataDaTarefa));
+			System.out.println("Dias para Conclusão: " + sdf.format(dataConclusaoTarefa) + "\n");
+			System.out.print("Adicionar outra tarefa? (S/N)");
+			char escolhaMenuAdicionar = sc.next().charAt(0);
+			sc.nextLine();
+			if(escolhaMenuAdicionar == 'N') {
+				execucaoMenuAdicionar = false;
+			}
+			
+		}
 	}
 }
