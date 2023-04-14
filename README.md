@@ -36,6 +36,7 @@ git clone https://github.com/ifpb-cz-ads/poo-2023-1-ai-Joao-Darwin.git Gerenciad
 ### Entrar na pasta raiz
 ```bash
 cd GerenciadorTarefas/
+```
 
 ### Entrar na pasta backend
 ```bash
