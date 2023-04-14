@@ -8,6 +8,7 @@ public class ProjetoPooApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(ProjetoPooApplication.class, args);
+		System.out.println("Programa Iniciado");
 	}
 
 }
