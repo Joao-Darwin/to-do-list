@@ -9,6 +9,9 @@ Irei usar a linguagem Java para construir essa aplicação, já que diz respeito
 ### Uso do POO
 A programação orientada a objeto será implemenetada na criação das 'entidades' que são classes e por sua vez intanciações das classes, objeto. Como por exemplo a classe que poderá representar a Tarefa, categorias, os lembretes utilizando outros tópicos de POO para representar relacionamentos, métodos entres as classes e etc.
 
+## Camadas lógicas (BackEnd)
+![Modelo Conceitual](https://github.com/Joao-Darwin/repoImgs/blob/main/Imgs%20-%20Web%20Service%20SpringBoot/camadasLogicas.png)
+
 ## Tecnologias usadas
 ### Back-End
 - Java (Linguagem de Programação
