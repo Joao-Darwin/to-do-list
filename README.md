@@ -33,10 +33,13 @@ A programação orientada a objeto será implemenetada na criação das 'entidad
 ```bash
 git clone https://github.com/ifpb-cz-ads/poo-2023-1-ai-Joao-Darwin.git GerenciadorTarefas
 ```
+### Entrar na pasta raiz
+```bash
+cd GerenciadorTarefas/
 
 ### Entrar na pasta backend
 ```bash
-cd backend
+cd backend/
 ```
 
 ### Instalar o Maven
@@ -51,13 +54,13 @@ sudo mvn clean install
 
 ### Rodar o backend
 ```bash
-mvn spring-boot:run
+sudo mvn spring-boot:run
 ```
 
 ## Front-End
 ### Sair da pasta do backend e ir para a do frontend
 ```bash
-cd ../frontend
+cd ../frontend/
 ```
 
 ### Instalar o npm
