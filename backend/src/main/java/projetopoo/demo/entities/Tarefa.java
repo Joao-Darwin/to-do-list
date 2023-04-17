@@ -36,7 +36,7 @@ public class Tarefa implements Serializable{
 	private Instant dataConclusao;
 	
 	private ImportanciaTarefas importancia;
-	private StatusTarefa status = StatusTarefa.CONCLUIDA;
+	private StatusTarefa status = StatusTarefa.PRA_FAZER;
 	
 	public Tarefa (String nome, String descricao, Instant dataConclusao, ImportanciaTarefas importancia) {
 		this.nome = nome;

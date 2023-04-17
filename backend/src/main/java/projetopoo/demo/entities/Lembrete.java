@@ -1,6 +1,7 @@
 package projetopoo.demo.entities;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.Objects;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -9,34 +10,34 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "Tags")
 @CrossOrigin("*")
-public class TagTarefa implements Serializable{
-	
+public class Lembrete implements Serializable{
+
 	private static final long serialVersionUID = 1L;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private String nome;
+	private Date dataLembrete;
+	private String mensagem;
 	
-	public TagTarefa(String nome) {
-		this.nome = nome;
+	public Lembrete (Date dataLembrete, String mensagem) {
+		this.dataLembrete = dataLembrete;
+		this.mensagem = mensagem;
 	}
 	
 	public Long getId() {
 		return id;
 	}
 	
-	public String getNome() {
-		return nome;
+	public Date getDataLembrete() {
+		return dataLembrete;
 	}
 	
-	public void setNome(String nome) {
-		this.nome = nome;
+	public String getMensagem() {
+		return mensagem;
 	}
 
 	@Override
@@ -52,8 +53,7 @@ public class TagTarefa implements Serializable{
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		TagTarefa other = (TagTarefa) obj;
+		Lembrete other = (Lembrete) obj;
 		return Objects.equals(id, other.id);
 	}
-
 }
