@@ -37,10 +37,10 @@ public class Tarefa implements Serializable{
 	private String nome;
 	private String descricao;
 	
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd", timezone = "GMT")
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'", timezone = "GMT")
 	private Instant dataCriacao = Instant.now();
 	
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd", timezone = "GMT")
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'", timezone = "GMT")
 	private Instant dataConclusao;
 	
 	@ManyToOne
@@ -57,6 +57,9 @@ public class Tarefa implements Serializable{
 	
 	private ImportanciaTarefas importancia;
 	private StatusTarefa status = StatusTarefa.PRA_FAZER;
+	
+	public Tarefa() {
+	}
 	
 	public Tarefa (String nome, String descricao, Instant dataConclusao, ImportanciaTarefas importancia) {
 		this.nome = nome;
@@ -101,7 +104,7 @@ public class Tarefa implements Serializable{
 		return dataCriacao;
 	}
 	
-	public Instant getDataComclusao() {
+	public Instant getDataConclusao() {
 		return dataConclusao;
 	}
 	
@@ -121,7 +124,7 @@ public class Tarefa implements Serializable{
 		return lembretes;
 	}
 	
-	public List<TagTarefa> tagsTarefa() {
+	public List<TagTarefa> getTagsTarefa() {
 		return tagsTarefa;
 	}
 	

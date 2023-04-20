@@ -32,6 +32,9 @@ public class TagTarefa implements Serializable{
 	@ManyToMany(mappedBy = "tagsTarefa")
 	private List<Tarefa> tarefas = new ArrayList<>();
 	
+	public TagTarefa() {
+	}
+	
 	public TagTarefa(String nome) {
 		this.nome = nome;
 	}
