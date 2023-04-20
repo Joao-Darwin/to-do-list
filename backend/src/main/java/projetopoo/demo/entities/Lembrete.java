@@ -10,6 +10,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 
 @Entity
 @CrossOrigin("*")
@@ -23,9 +25,14 @@ public class Lembrete implements Serializable{
 	private Date dataLembrete;
 	private String mensagem;
 	
-	public Lembrete (Date dataLembrete, String mensagem) {
+	@ManyToOne
+	@JoinColumn(name = "tarefa_id")
+	private Tarefa tarefa;
+	
+	public Lembrete (Date dataLembrete, String mensagem, Tarefa tarefa) {
 		this.dataLembrete = dataLembrete;
 		this.mensagem = mensagem;
+		this.tarefa = tarefa;
 	}
 	
 	public Long getId() {
@@ -38,6 +45,10 @@ public class Lembrete implements Serializable{
 	
 	public String getMensagem() {
 		return mensagem;
+	}
+	
+	public Tarefa getTarefa() {
+		return tarefa;
 	}
 
 	@Override

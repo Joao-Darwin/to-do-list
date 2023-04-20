@@ -2,17 +2,25 @@ package projetopoo.demo.entities;
 
 import java.io.Serializable;
 import java.time.Instant;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Objects;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import projetopoo.demo.entities.enums.ImportanciaTarefas;
 import projetopoo.demo.entities.enums.StatusTarefa;
 
@@ -35,6 +43,18 @@ public class Tarefa implements Serializable{
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd", timezone = "GMT")
 	private Instant dataConclusao;
 	
+	@ManyToOne
+	@JoinColumn(name = "categoria_id")
+	private Categoria categoria;
+	
+	@JsonIgnore
+	@OneToMany(mappedBy = "tarefa")
+	private List<Lembrete> lembretes = new ArrayList<>();
+	
+	@ManyToMany
+	@JoinTable(name = "tarefas_tags", joinColumns = @JoinColumn(name = "tarefa_id"), inverseJoinColumns = @JoinColumn(name = "tag_id"))
+	private List<TagTarefa> tagsTarefa = new ArrayList<>();
+	
 	private ImportanciaTarefas importancia;
 	private StatusTarefa status = StatusTarefa.PRA_FAZER;
 	
@@ -42,6 +62,14 @@ public class Tarefa implements Serializable{
 		this.nome = nome;
 		this.descricao = descricao;
 		this.dataConclusao = dataConclusao;
+		this.importancia = importancia;
+	}
+	
+	public Tarefa (String nome, String descricao, Categoria categoria, Instant dataConclusao, ImportanciaTarefas importancia) {
+		this.nome = nome;
+		this.descricao = descricao;
+		this.dataConclusao = dataConclusao;
+		this.categoria = categoria;
 		this.importancia = importancia;
 	}
 	
@@ -79,6 +107,22 @@ public class Tarefa implements Serializable{
 	
 	public void setDataConclusao(Instant dataConclusao) {
 		this.dataConclusao = dataConclusao;
+	}
+	
+	public Categoria getCategoria() {
+		return categoria;
+	}
+	
+	public void setCategoria(Categoria categoria) {
+		this.categoria = categoria;
+	}
+	
+	public List<Lembrete> getLembretes() {
+		return lembretes;
+	}
+	
+	public List<TagTarefa> tagsTarefa() {
+		return tagsTarefa;
 	}
 	
 	public ImportanciaTarefas getImportancia() {

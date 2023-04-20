@@ -1,14 +1,19 @@
 package projetopoo.demo.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 
 @Entity
 @CrossOrigin("*")
@@ -20,6 +25,10 @@ public class Categoria implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String nome;
+	
+	@JsonIgnore
+	@OneToMany(mappedBy = "categoria")
+	private List<Tarefa> tarefas = new ArrayList<>();
 	
 	public Categoria(String nome) {
 		this.nome = nome;
@@ -35,6 +44,10 @@ public class Categoria implements Serializable{
 	
 	public void setNome(String nome) {
 		this.nome = nome;
+	}
+	
+	public List<Tarefa> getTarefas() {
+		return tarefas;
 	}
 
 	@Override

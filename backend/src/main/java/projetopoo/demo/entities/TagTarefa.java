@@ -1,14 +1,19 @@
 package projetopoo.demo.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -22,6 +27,10 @@ public class TagTarefa implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String nome;
+	
+	@JsonIgnore
+	@ManyToMany(mappedBy = "tagsTarefa")
+	private List<Tarefa> tarefas = new ArrayList<>();
 	
 	public TagTarefa(String nome) {
 		this.nome = nome;
@@ -37,6 +46,10 @@ public class TagTarefa implements Serializable{
 	
 	public void setNome(String nome) {
 		this.nome = nome;
+	}
+	
+	public List<Tarefa> getTarefas() {
+		return tarefas;
 	}
 
 	@Override
