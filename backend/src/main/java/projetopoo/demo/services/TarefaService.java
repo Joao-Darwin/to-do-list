@@ -1,5 +1,7 @@
 package projetopoo.demo.services;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.OptimisticLockingFailureException;
 import org.springframework.stereotype.Service;
@@ -16,9 +18,9 @@ public class TarefaService {
 	private TarefaRepository tarefaRepository;
 	
 	//Encontrar todos as tarefas
-	public Tarefa[] findAll() {
-		Tarefa[] tarefas = (Tarefa[]) tarefaRepository.findAll().toArray();
-		if(tarefas.length == 0) {
+	public List<Tarefa> findAll() {
+		List<Tarefa> tarefas = tarefaRepository.findAll();
+		if(tarefas.isEmpty()) {
 			throw new DataBaseException("Nenhuma tarefa foi encontrada");
 		}
 		return tarefas;
