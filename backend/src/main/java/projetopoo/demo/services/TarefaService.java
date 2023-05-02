@@ -17,7 +17,16 @@ public class TarefaService {
 	@Autowired
 	private TarefaRepository tarefaRepository;
 	
-	//Encontrar todos as tarefas
+	//Inserir um atarefa
+	public Tarefa insert(Tarefa tarefa) {
+		try {
+			return tarefaRepository.save(tarefa);
+		} catch(IllegalArgumentException e) {
+			throw new DataBaseException("O objeto informado não pode ser null");
+		}
+	}
+	
+	//Encontrar todas as tarefas
 	public List<Tarefa> findAll() {
 		List<Tarefa> tarefas = tarefaRepository.findAll();
 		if(tarefas.isEmpty()) {

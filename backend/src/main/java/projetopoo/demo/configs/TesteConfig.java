@@ -3,6 +3,7 @@ package projetopoo.demo.configs;
 import java.time.Instant;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.Scanner;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -39,11 +40,12 @@ public class TesteConfig implements CommandLineRunner{
 	public void run(String... args) throws Exception {
 		Categoria categoria01 = new Categoria("IFPB");
 		Categoria categoria02 = new Categoria("Trabalho");
+		Categoria categoria03 = new Categoria("Pessoal");
 		
 		Tarefa tarefa01 = new Tarefa("Fazer atividade de POO", "Tenho que concluir a atividade colaborativa 07 de POO", categoria01, Instant.parse("2023-04-25T15:25:04Z"), ImportanciaTarefas.MEDIA);
 		Tarefa tarefa02 = new Tarefa("Projeto Banco de Dados I", "terminar o diagrama entidade relacionamento", categoria01, Instant.parse("2023-04-25T15:25:04Z"), ImportanciaTarefas.MEDIA);
 		
-		categoriaRepository.saveAll(Arrays.asList(categoria01, categoria02));
+		categoriaRepository.saveAll(Arrays.asList(categoria01, categoria02, categoria03));
 		tarefaRepository.saveAll(Arrays.asList(tarefa01, tarefa02));
 		
 		TagTarefa tag01 = new TagTarefa("Banco de dados I");
@@ -61,6 +63,9 @@ public class TesteConfig implements CommandLineRunner{
 		
 		Lembrete lembrete01 = new Lembrete(Date.from(tarefa02.getDataConclusao()), "Revisar o código", tarefa02);
 		
-		lembreteRepository.save(lembrete01);		
+		lembreteRepository.save(lembrete01);
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Gostaria de falar alguma coisa??");
+		
 	}	
 }
