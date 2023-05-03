@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 import projetopoo.demo.entities.TagTarefa;
 import projetopoo.demo.exceptions.DataBaseException;
-import projetopoo.demo.exceptions.ResourceNotFoundByName;
+import projetopoo.demo.exceptions.ResourceNotFoundByNameException;
 import projetopoo.demo.exceptions.ResourceNotFoundException;
 import projetopoo.demo.repositories.TagRepository;
 
@@ -30,7 +30,7 @@ public class TagService {
 	public TagTarefa findByNome(String nome) {
 		TagTarefa tag = tagRepository.findByNome(nome);
 		if(tag != null) {
-			throw new ResourceNotFoundByName(nome);
+			throw new ResourceNotFoundByNameException(nome);
 		}
 		return tag;
 	}
