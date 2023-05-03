@@ -3,7 +3,6 @@ package projetopoo.demo.configs;
 import java.time.Instant;
 import java.util.Arrays;
 import java.util.Date;
-import java.util.Scanner;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -64,8 +63,6 @@ public class TesteConfig implements CommandLineRunner{
 		Lembrete lembrete01 = new Lembrete(Date.from(tarefa02.getDataConclusao()), "Revisar o código", tarefa02);
 		
 		lembreteRepository.save(lembrete01);
-		Scanner sc = new Scanner(System.in);
-		System.out.println("Gostaria de falar alguma coisa??");
 		
 	}	
 }

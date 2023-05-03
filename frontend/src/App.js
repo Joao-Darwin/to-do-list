@@ -7,6 +7,7 @@ function App() {
       <h1>Gerenciador de Tarefas</h1>
       <h2>Criar tarefa</h2>
       <FormTarefa/>
+      <h2>Tarefas</h2>
     </div>
   );
 }
