@@ -12,6 +12,9 @@ A programação orientada a objeto será implemenetada na criação das 'entidad
 ## Camadas lógicas (BackEnd)
 ![Modelo Conceitual](https://github.com/Joao-Darwin/repoImgs/blob/main/Imgs%20-%20Web%20Service%20SpringBoot/camadasLogicas.png)
 
+## Diagrama de Classes (BackEnd)
+![Diagrama de Classes](https://github.com/Joao-Darwin/repoImgs/blob/main/Imgs%20-%20Projeto%20POO%20To%20do%20List/DiagramaDeClasses.png)
+
 ## Tecnologias usadas
 ### Back-End
 - Java (Linguagem de Programação
