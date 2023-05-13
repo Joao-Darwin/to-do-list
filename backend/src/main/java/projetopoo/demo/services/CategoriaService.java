@@ -46,9 +46,9 @@ public class CategoriaService {
 	}
 	
 	//Método para criar categoria
-	public void insert(Categoria categoria) {
+	public Categoria insert(Categoria categoria) {
 		try {
-			categoriaRepository.save(categoria);
+			return categoriaRepository.save(categoria);
 		} catch(IllegalArgumentException e) {
 			throw new DataBaseException("A categoria não pode ser null");
 		}

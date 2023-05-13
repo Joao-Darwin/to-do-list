@@ -10,51 +10,61 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import projetopoo.demo.entities.Categoria;
 import projetopoo.demo.entities.Tarefa;
 import projetopoo.demo.exceptions.DataBaseException;
 import projetopoo.demo.exceptions.ResourceNotFoundException;
-import projetopoo.demo.services.TarefaService;
+import projetopoo.demo.services.CategoriaService;
 
 @RestController
-@RequestMapping("/tarefa")
-public class TarefaResource {
+@RequestMapping("/categoria")
+public class CategoriaResource {
 
 	@Autowired
-	private TarefaService tarefaService;
+	private CategoriaService categoriaService;
 
 	@PostMapping
-	public ResponseEntity<Tarefa> insert(@RequestBody Tarefa tarefa) {
+	public ResponseEntity<Categoria> insert(@RequestBody Categoria categoria) {
 		try {
-			tarefa = tarefaService.insert(tarefa);
-			URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(tarefa.getId())
+			categoria = categoriaService.insert(categoria);
+			URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(categoria.getId())
 					.toUri();
-			return ResponseEntity.created(uri).body(tarefa);
+			return ResponseEntity.created(uri).body(categoria);
 		} catch (DataBaseException e) {
 			return ResponseEntity.status(HttpStatus.NOT_IMPLEMENTED).build();
 		}
 	}
 
 	@GetMapping
-	public ResponseEntity<List<Tarefa>> findAll() {
+	public ResponseEntity<List<Categoria>> findAll() {
 		try {
-			List<Tarefa> listTarefa = tarefaService.findAll();
-			return ResponseEntity.status(HttpStatus.OK).body(listTarefa);
+			List<Categoria> listCategoria = categoriaService.findAll();
+			return ResponseEntity.status(HttpStatus.OK).body(listCategoria);
 		} catch (DataBaseException e) {
 			return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
 		}
 	}
+	
+	@GetMapping(value = "/{id}/tarefas")
+	public ResponseEntity<List<Tarefa>> findTarefaByCategoria(@PathVariable Long id) {
+		try {
+			List<Tarefa> listTarefas = categoriaService.findTarefasByCategoria(id);
+			return ResponseEntity.status(HttpStatus.OK).body(listTarefas);
+		} catch (ResourceNotFoundException e) {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+		}
+	}
 
 	@GetMapping(value = "/{id}")
-	public ResponseEntity<Tarefa> findById(@PathVariable Long id) {
+	public ResponseEntity<Categoria> findById(@PathVariable Long id) {
 		try {
-			Tarefa tarefa = tarefaService.findById(id);
-			return ResponseEntity.status(HttpStatus.OK).body(tarefa);
+			Categoria categoria = categoriaService.findById(id);
+			return ResponseEntity.status(HttpStatus.OK).body(categoria);
 		} catch (ResourceNotFoundException e) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
 		}
@@ -63,22 +73,10 @@ public class TarefaResource {
 	@DeleteMapping(value = "/{id}")
 	public ResponseEntity<Void> deleteById(@PathVariable Long id) {
 		try {
-			tarefaService.deleteById(id);
+			categoriaService.deleteById(id);
 			return ResponseEntity.status(HttpStatus.OK).build();
 		} catch (ResourceNotFoundException e) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
-		}
-	}
-
-	@PutMapping(value = "/{id}")
-	public ResponseEntity<Tarefa> updateTarefa(@PathVariable Long id, @RequestBody Tarefa tarefa) {
-		try {
-			tarefa = tarefaService.updateTarefa(tarefa, id);
-			return ResponseEntity.status(HttpStatus.OK).body(tarefa);
-		} catch (ResourceNotFoundException e) {
-			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
-		} catch (DataBaseException e) {
-			return ResponseEntity.status(HttpStatus.NOT_IMPLEMENTED).build();
 		}
 	}
 }
