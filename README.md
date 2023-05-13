@@ -72,6 +72,11 @@ cd ../frontend/
 sudo apt-get install npm
 ```
 
+### Instalar depedências do frontend
+```bash
+sudo npm install
+```
+
 ### Builder no frontend
 ```bash
 sudo npm run build
