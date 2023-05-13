@@ -21,24 +21,40 @@ public class TagService {
 	public List<TagTarefa> findAll() {
 		List<TagTarefa> listTags = tagRepository.findAll();
 		if(listTags.isEmpty()) {
-			throw new DataBaseException("Nenhuma tag foi encontrad!");
+			throw new DataBaseException("Nenhuma tag foi encontrado!");
 		}
 		return listTags;
 	}
 	
+	public TagTarefa findById(Long id) {
+		try {
+			TagTarefa tag = tagRepository.findById(id).get();
+			return tag;
+		} catch (IllegalArgumentException e) {
+			throw new ResourceNotFoundException(id);
+		}
+	}
+	
 	//Método para encontrar uma tag pelo nome
 	public TagTarefa findByNome(String nome) {
-		TagTarefa tag = tagRepository.findByNome(nome);
-		if(tag != null) {
+		TagTarefa tagTarefa = null;
+		List<TagTarefa> listTag = tagRepository.findAll();
+		for(TagTarefa tag : listTag) {
+			int result = tag.getNome().compareToIgnoreCase(nome);
+			if(result == 0) {
+				tagTarefa = tag;
+			}
+		}
+		if(tagTarefa == null) {
 			throw new ResourceNotFoundByNameException(nome);
 		}
-		return tag;
+		return tagTarefa;
 	}
 	
 	//Método para criar uma nova tag
-	public void insertTag(TagTarefa tag) {
+	public TagTarefa insertTag(TagTarefa tag) {
 		try {
-			tagRepository.save(tag);
+			return tagRepository.save(tag);
 		}catch(IllegalArgumentException e) {
 			throw new DataBaseException("A entidade não pode ser null");
 		}
