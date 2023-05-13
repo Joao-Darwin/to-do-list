@@ -15,50 +15,53 @@ import jakarta.persistence.ManyToOne;
 
 @Entity
 @CrossOrigin("*")
-public class Lembrete implements Serializable{
+public class Lembrete implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private Date dataLembrete;
 	private String mensagem;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "tarefa_id")
 	private Tarefa tarefa;
-	
-	public Lembrete (Date dataLembrete, String mensagem, Tarefa tarefa) {
+
+	public Lembrete() {
+	}
+
+	public Lembrete(Date dataLembrete, String mensagem, Tarefa tarefa) {
 		this.dataLembrete = dataLembrete;
 		this.mensagem = mensagem;
 		this.tarefa = tarefa;
 	}
-	
+
 	public Long getId() {
 		return id;
 	}
-	
+
 	public Date getDataLembrete() {
 		return dataLembrete;
 	}
-	
+
 	public void setDataLembrete(Date dataLembrete) {
 		this.dataLembrete = dataLembrete;
 	}
-	
+
 	public String getMensagem() {
 		return mensagem;
 	}
-	
+
 	public void setMensagem(String mensagem) {
 		this.mensagem = mensagem;
 	}
-	
+
 	public Tarefa getTarefa() {
 		return tarefa;
 	}
-	
+
 	public void setTarefa(Tarefa tarefa) {
 		this.tarefa = tarefa;
 	}

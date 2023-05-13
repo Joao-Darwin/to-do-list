@@ -35,9 +35,9 @@ public class LembreteService {
 	}
 	
 	//Método para criar uma lembrete
-	public void insert(Lembrete lembrete) {
+	public Lembrete insert(Lembrete lembrete) {
 		try {
-			lembreteRepository.save(lembrete);
+			return lembreteRepository.save(lembrete);
 		} catch(IllegalArgumentException e) {
 			throw new DataBaseException("O lembrete não pode ser null");
 		}
