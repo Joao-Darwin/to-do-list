@@ -43,12 +43,24 @@ public class Lembrete implements Serializable{
 		return dataLembrete;
 	}
 	
+	public void setDataLembrete(Date dataLembrete) {
+		this.dataLembrete = dataLembrete;
+	}
+	
 	public String getMensagem() {
 		return mensagem;
 	}
 	
+	public void setMensagem(String mensagem) {
+		this.mensagem = mensagem;
+	}
+	
 	public Tarefa getTarefa() {
 		return tarefa;
+	}
+	
+	public void setTarefa(Tarefa tarefa) {
+		this.tarefa = tarefa;
 	}
 
 	@Override
