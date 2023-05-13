@@ -144,7 +144,7 @@ public class Tarefa implements Serializable{
 		this.status = status;
 	}
 	
-	public static int prazoTarefa(Instant dataConclusao) {
+	public int prazoTarefa(Instant dataConclusao) {
 		Instant agora = Instant.now();
 		return Date.from(dataConclusao).compareTo(Date.from(agora));
 	}
