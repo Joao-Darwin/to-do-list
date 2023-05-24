@@ -7,8 +7,6 @@ import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
-import org.springframework.web.bind.annotation.CrossOrigin;
-
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -25,7 +23,6 @@ import projetopoo.demo.entities.enums.ImportanciaTarefas;
 import projetopoo.demo.entities.enums.StatusTarefa;
 
 @Entity
-@CrossOrigin("*")
 public class Tarefa implements Serializable{
 
 	private static final long serialVersionUID = 1L;
