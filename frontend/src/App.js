@@ -1,5 +1,5 @@
 import './App.css';
-import FormTarefa from './components/FormTarefa';
+import FormTarefa from './components/FormTarefa/FormTarefa';
 
 function App() {
   return (
@@ -7,7 +7,6 @@ function App() {
       <h1>Gerenciador de Tarefas</h1>
       <h2>Criar tarefa</h2>
       <FormTarefa/>
-      <h2>Tarefas</h2>
     </div>
   );
 }
