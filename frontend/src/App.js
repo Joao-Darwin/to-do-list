@@ -1,13 +1,12 @@
 import './App.css';
-import FormTarefa from './components/FormTarefa/FormTarefa';
+import { BrowserRouter } from 'react-router-dom';
+import { Routes } from './routes';
 
 function App() {
   return (
-    <div className="App">
-      <h1>Gerenciador de Tarefas</h1>
-      <h2>Criar tarefa</h2>
-      <FormTarefa/>
-    </div>
+    <BrowserRouter>
+      <Routes/>
+    </BrowserRouter>
   );
 }
 
