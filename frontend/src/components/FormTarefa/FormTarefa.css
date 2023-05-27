@@ -52,4 +52,9 @@
     background-color: #4eb879;
     color: white;
     cursor: pointer;
+    transition: all 0.5s;
+}
+
+.buttonForm:hover {
+    background-color: #1a6437;
 }

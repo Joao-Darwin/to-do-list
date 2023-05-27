@@ -5,6 +5,8 @@ import openApi from '../../services/api';
 
 const importanciasGraus = ['URGENTE', 'ALTA', 'MEDIA', 'BAIXA'];
 
+const hoje = new Date().toISOString().split('T')[0]
+
 const FormTarefa = () => {
     const [nomeAtividade, setNomeAtividade] = useState('');
     const [descricao, setDescricao] = useState('');
@@ -65,7 +67,7 @@ const FormTarefa = () => {
                 <div className='divInputsSelect'>
                     <label className='labels'>
                         <span>Data de Conclusão: </span>
-                        <input className='inputData' type='date' placeholder='Data Conclusão' onChange={(e) => setDataConclusao(e.target.value)} value={dataConclusao}></input>
+                        <input className='inputData' type='date' placeholder='Data Conclusão' min={hoje} onChange={(e) => setDataConclusao(e.target.value)} value={dataConclusao}></input>
                     </label>
                     <label className='labels'>
                         <span>Importância: </span>
