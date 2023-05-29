@@ -19,7 +19,9 @@ const Tarefas = () => {
         <div>
             <h1>Tarefas</h1>
             <div className='divTarefas'>
-                {
+                {(tarefas.length === 0) ? (
+                    <span>Você não possui nenhuma Tarefa!</span>
+                ) : (
                     tarefas.map((tarefa) => (
                         <Tarefa
                             key={tarefa.id}
@@ -32,7 +34,7 @@ const Tarefas = () => {
                             importancia={tarefa.importancia}
                         />
                     ))
-                }
+                )}
             </div>
         </div>
 
