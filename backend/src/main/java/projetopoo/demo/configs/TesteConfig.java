@@ -40,12 +40,14 @@ public class TesteConfig implements CommandLineRunner{
 		Categoria categoria01 = new Categoria("IFPB");
 		Categoria categoria02 = new Categoria("Trabalho");
 		Categoria categoria03 = new Categoria("Pessoal");
+		Categoria categoria04 = new Categoria("Freelancer");
 		
 		Tarefa tarefa01 = new Tarefa("Fazer atividade de POO", "Tenho que concluir a atividade colaborativa 07 de POO", categoria01, Instant.parse("2023-04-25T15:25:04Z"), ImportanciaTarefas.MEDIA);
 		Tarefa tarefa02 = new Tarefa("Projeto Banco de Dados I", "terminar o diagrama entidade relacionamento", categoria01, Instant.parse("2023-04-25T15:25:04Z"), ImportanciaTarefas.MEDIA);
+		Tarefa tarefa03 = new Tarefa("Reunião com o dono do projeto", "A reunião vai ser as 14h da tarde", categoria04, Instant.parse("2023-05-25T15:25:04Z"), ImportanciaTarefas.URGENTE);
 		
-		categoriaRepository.saveAll(Arrays.asList(categoria01, categoria02, categoria03));
-		tarefaRepository.saveAll(Arrays.asList(tarefa01, tarefa02));
+		categoriaRepository.saveAll(Arrays.asList(categoria01, categoria02, categoria03, categoria04));
+		tarefaRepository.saveAll(Arrays.asList(tarefa01, tarefa02, tarefa03));
 		
 		TagTarefa tag01 = new TagTarefa("Banco de dados I");
 		TagTarefa tag02 = new TagTarefa("Programação Orientada a Objetos");

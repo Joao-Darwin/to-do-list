@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom';
 
 import "./FormTarefa.css"
 import openApi from '../../services/api';
@@ -11,8 +12,8 @@ const FormTarefa = () => {
     const [nomeAtividade, setNomeAtividade] = useState('');
     const [descricao, setDescricao] = useState('');
     const [dataConclusao, setDataConclusao] = useState('');
-    const [importancia, setImportancia] = useState('');
-    const [categoria, setCategoria] = useState('');
+    const [importancia, setImportancia] = useState(0);
+    const [categoria, setCategoria] = useState(1);
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -21,6 +22,11 @@ const FormTarefa = () => {
     }
 
     const sendRequest = async () => {
+        console.log("Nome: ", nomeAtividade);
+        console.log("Descrição: ", descricao);
+        console.log("Data conclusão: ", dataConclusao);
+        console.log("Importancia: ", importancia);
+        console.log("Categoria: ", categoria);
         try {
             let response = await openApi.post("/tarefa", {
                 "nome": nomeAtividade,
@@ -59,7 +65,7 @@ const FormTarefa = () => {
         <>
             <form className='form' onSubmit={handleSubmit}>
                 <label className='labels'>
-                    <input className='inputText' type='text' placeholder='Nome Atividade' autoFocus onChange={(e) => setNomeAtividade(e.target.value)} value={nomeAtividade}></input>
+                    <input className='inputText' required type='text' placeholder='Nome Atividade' autoFocus onChange={(e) => setNomeAtividade(e.target.value)} value={nomeAtividade}></input>
                 </label>
                 <label className='labels'>
                     <textarea cols="70" rows="3" placeholder="Descrição da Tarefa" onChange={(e) => setDescricao(e.target.value)} value={descricao}></textarea>
@@ -72,8 +78,8 @@ const FormTarefa = () => {
                     <label className='labels'>
                         <span>Importância: </span>
                         <select name='importancia' className='inputSelect' onChange={(e) => setImportancia(e.target.value)} value={importancia}>
-                            {importanciasGraus.map((value) => {
-                                return <option className='importanciaSelect' key={value} value={value}>{value}</option>
+                            {importanciasGraus.map((value, index) => {
+                                return <option className='importanciaSelect' key={value} value={(index)}>{value}</option>
                             })}
                         </select>
                     </label>
@@ -82,7 +88,7 @@ const FormTarefa = () => {
                         <select name='categoria' className='inputSelect' onChange={(e) => setCategoria(e.target.value)} value={categoria}>
                             {
                                 allCategories.map((value, index) => {
-                                    return <option style={{textTransform: "uppercase"}} className='importanciaSelect' key={value.nome} value={index}>{value.nome}</option>
+                                    return <option style={{ textTransform: "uppercase" }} className='importanciaSelect' key={value.nome} value={(index + 1)}>{value.nome}</option>
                                 })
                             }
                         </select>
@@ -90,6 +96,9 @@ const FormTarefa = () => {
                 </div>
                 <input className='buttonForm' type='submit' value="Adicionar tarefa" />
             </form>
+            <Link to={"/tarefas"}>
+                <button className='buttonForm' type='button' value="Tarefas">Tarefas</button>
+            </Link>
         </>
     )
 }
