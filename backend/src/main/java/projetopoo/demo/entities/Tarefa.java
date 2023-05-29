@@ -7,6 +7,9 @@ import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
+
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -46,6 +49,7 @@ public class Tarefa implements Serializable{
 	
 	@JsonIgnore
 	@OneToMany(mappedBy = "tarefa")
+	@Cascade(CascadeType.DELETE)
 	private List<Lembrete> lembretes = new ArrayList<>();
 	
 	@ManyToMany
