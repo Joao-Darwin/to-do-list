@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom';
 
 import "./FormTarefa.css"
 import openApi from '../../services/api';
@@ -96,9 +95,6 @@ const FormTarefa = () => {
                 </div>
                 <input className='buttonForm' type='submit' value="Adicionar tarefa" />
             </form>
-            <Link to={"/tarefas"}>
-                <button className='buttonForm' type='button' value="Tarefas">Tarefas</button>
-            </Link>
         </>
     )
 }
