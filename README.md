@@ -9,6 +9,9 @@ Irei usar a linguagem Java para construir essa aplicação, já que diz respeito
 ### Uso do POO
 A programação orientada a objeto será implemenetada na criação das 'entidades' que são classes e por sua vez intanciações das classes, objeto. Como por exemplo a classe que poderá representar a Tarefa, categorias, os lembretes utilizando outros tópicos de POO para representar relacionamentos, métodos entres as classes e etc.
 
+## Modelo Conceitual do Banco de Dados
+![Modelo Conceitual do Banco de Dados](https://github.com/Joao-Darwin/repoImgs/blob/main/Imgs%20-%20Projeto%20POO%20To%20do%20List/Projeto%20Conceitual%20-%20To%20do%20List.png)
+
 ## Camadas lógicas (BackEnd)
 ![Modelo Conceitual](https://github.com/Joao-Darwin/repoImgs/blob/main/Imgs%20-%20Web%20Service%20SpringBoot/camadasLogicas.png)
 
