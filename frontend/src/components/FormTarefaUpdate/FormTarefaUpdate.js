@@ -18,7 +18,7 @@ const FormTarefaUpdate = ({ id, nomeTarefa, descricaoTarefa, dataConclusaoTarefa
     const [descricao, setDescricao] = useState(descricaoTarefa);
     const [dataConclusao, setDataConclusao] = useState(formatDate(dataConclusaoTarefa));
     const [importancia, setImportancia] = useState(importanciaTarefa);
-    const [status, setStatus] = useState(statusTarefa);
+    const [status, setStatus] = useState(statusGraus.indexOf(statusTarefa));
     const [categoria, setCategoria] = useState(categoriaTarefa.id);
     const [allCategories, setAllCategories] = useState([]);
 
@@ -53,6 +53,19 @@ const FormTarefaUpdate = ({ id, nomeTarefa, descricaoTarefa, dataConclusaoTarefa
         findAllCategories();
     }, [])
 
+    // Formatar o Status da Tarefa
+    const statusFormat = (status) => {
+        if (status === 'PRA_FAZER') {
+            return "A FAZER";
+        } else if (status === 'EM_PROGRESSO') {
+            return "EM PROGRESSO";
+        } else if (status === 'CONCLUIDA') {
+            return "CONCLUÍDA";
+        } else {
+            return "CANCELADA";
+        }
+    }
+
     return (
         <div className='divFormTarefaUpdate'>
             <h1>Atualizar Tarefa</h1>
@@ -70,15 +83,15 @@ const FormTarefaUpdate = ({ id, nomeTarefa, descricaoTarefa, dataConclusaoTarefa
                     </label>
                     <label className='labels'>
                         <span>Importância: </span>
-                        <select name='importancia' className='inputSelect' onChange={(e) => setImportancia(e.target.value)} value={importanciasGraus.indexOf(importancia)}>
+                        <select name='importancia' className='inputSelect' onChange={(e) => setImportancia(e.target.value)} value={importancia}>
                             {importanciasGraus.map((value, index) => {
-                                return <option className='importanciaSelect' key={value} value={(index)}>{value}</option>
+                                return <option className='importanciaSelect' key={value} value={(value)}>{value}</option>
                             })}
                         </select>
                     </label>
                     <label className='labels'>
                         <span>Categoria</span>
-                        <select name='categoria' className='inputSelect' onChange={(e) => setCategoria(e.target.value)} value={categoria}>
+                        <select name='categoria' style={{textTransform: "uppercase"}} className='inputSelect' onChange={(e) => setCategoria(e.target.value)} value={categoria}>
                             {
                                 allCategories.map((value, index) => {
                                     return <option style={{ textTransform: "uppercase" }} className='importanciaSelect' key={value.nome} value={(value.id)}>{value.nome}</option>
@@ -88,10 +101,10 @@ const FormTarefaUpdate = ({ id, nomeTarefa, descricaoTarefa, dataConclusaoTarefa
                     </label>
                     <label>
                         <span>Status</span>
-                        <select name="status" className='inputSelect' onChange={(e) => setStatus(e.target.value)} value={statusGraus.indexOf(status)}>
+                        <select name="status" className='inputSelect' onChange={(e) => setStatus(e.target.value)} value={status}>
                             {
                                 statusGraus.map((status, index) => {
-                                    return <option key={status} value={index}>{status}</option>
+                                    return <option key={status} value={index}>{statusFormat(status)}</option>
                                 })
                             }
                         </select>
