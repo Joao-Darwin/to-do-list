@@ -1,0 +1,40 @@
+.divFormTarefaUpdate {
+    background-color: #2a2e42;
+    border: 2px solid white;
+    padding: 10px;
+    border-radius: 10px;
+    position: absolute;
+    z-index: 2;
+    align-items: center;
+    text-align: center;
+    margin: 0;
+    box-shadow: 10px 10px rgba(0, 0, 0, 0.418);
+}
+
+.buttonFormUpdate {
+    width: 30%;
+    height: 40px;
+    border: none;
+    border-radius: 5px;
+    font-size: 20px;
+    color: white;
+    cursor: pointer;
+    transition: all 0.5s;
+}
+
+.buttonForm {
+    background-color: #4eb879;
+}
+
+.buttonForm:hover {
+    background-color: #1a6437;
+}
+
+.buttonFormCancel {
+    margin-right: 5px;
+    background-color: #eb3f3f
+}
+
+.buttonFormCancel:hover {
+    background-color: #aa3131;
+}

@@ -7,6 +7,7 @@ const Tarefas = () => {
 
     const [tarefas, setTarefas] = useState([]);
 
+    // Carrega as Tarefas
     useEffect(() => {
         const FindAllTarefas = async () => {
             const tarefas = (await openApi.get("/tarefa")).data;
@@ -32,6 +33,7 @@ const Tarefas = () => {
                             dataConclusao={tarefa.dataConclusao}
                             status={tarefa.status}
                             importancia={tarefa.importancia}
+                            categoria={tarefa.categoria}
                         />
                     ))
                 )}
