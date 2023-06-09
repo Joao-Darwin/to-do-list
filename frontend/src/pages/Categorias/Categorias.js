@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import openApi from '../../services/api';
-import Categoria from '../../components/Categorias/Categoria';
+import Categoria from '../../components/Categoria/Categoria';
+import "./Categorias.css"
 
 const Categorias = () => {
 
@@ -17,10 +18,10 @@ const Categorias = () => {
     return (
         <div>
             <h1>Categorias</h1>
-            <div style={{display: "flex"}}>
+            <div className='divAllCategories'>
                 {categorias.length > 0 ? (
                     categorias.map((categoria, index) => {
-                        return <Categoria id={categoria.id} nome={categoria.nome} />
+                        return <Categoria id={categoria.id} nome={categoria.nome} key={categoria.nome}/>
                     })
                 ) : (
                     <p>Você não possui nehuma Categoria!</p>

@@ -33,7 +33,7 @@ const Tarefas = () => {
                             dataConclusao={tarefa.dataConclusao}
                             status={tarefa.status}
                             importancia={tarefa.importancia}
-                            categoria={tarefa.categoria}
+                            categoria={tarefa.categoria === null ? 0 : tarefa.categoria}
                         />
                     ))
                 )}
