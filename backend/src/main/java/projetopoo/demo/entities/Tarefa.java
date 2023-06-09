@@ -44,7 +44,7 @@ public class Tarefa implements Serializable{
 	private Instant dataConclusao;
 	
 	@ManyToOne
-	@JoinColumn(name = "categoria_id")
+	@JoinColumn(name = "categoria_id", nullable = true)
 	private Categoria categoria;
 	
 	@JsonIgnore

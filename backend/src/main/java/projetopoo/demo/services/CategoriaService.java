@@ -57,6 +57,10 @@ public class CategoriaService {
 	//Método para deletar categoria
 	public void deleteById(Long id) {
 		try {
+			List<Tarefa> tarefas = findTarefasByCategoria(id);
+			for(Tarefa tarefa : tarefas) {
+				tarefa.setCategoria(null);
+			}
 			categoriaRepository.deleteById(id);
 		} catch(IllegalArgumentException e) {
 			throw new ResourceNotFoundException(id);
