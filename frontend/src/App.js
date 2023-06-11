@@ -1,12 +1,12 @@
 import './App.css';
 import { BrowserRouter } from 'react-router-dom';
 import { Routes } from './routes';
+import TopBar from './components/TopBar/TopBar';
 
 function App() {
   return (
     <BrowserRouter>
-      {/* Colocar aqui um componente de Layout da página, uma barra superior talvez */}
-      <h1>Gerenciador de Tarefas</h1>
+      <TopBar />
       <Routes/>
     </BrowserRouter>
   );

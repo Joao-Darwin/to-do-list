@@ -1,0 +1,12 @@
+.divTopBar {
+    padding-left: 15%;
+    padding-right: 15%;
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+}
+
+.iconeTopBar {
+    width: 45px;
+    cursor: pointer;
+}
