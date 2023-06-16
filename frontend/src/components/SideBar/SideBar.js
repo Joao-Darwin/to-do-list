@@ -13,7 +13,7 @@ const SideBar = ({ handleSideBar }) => {
                 <Link to={"/tarefas"} className='buttonFormMenu'>
                     <p>Tarefas</p>
                 </Link>
-                <Link to={"/categoria"} className='buttonFormMenu'>
+                <Link to={"/categorias"} className='buttonFormMenu'>
                     <p>Categorias</p>
                 </Link>
                 <Link to={"/tag"} className='buttonFormMenu'>
