@@ -9,4 +9,9 @@
 .iconeTopBar {
     width: 45px;
     cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.iconeTopBar:hover {
+    transform: rotate(90deg);
 }
