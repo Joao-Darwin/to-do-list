@@ -1,0 +1,43 @@
+.divSideBar {
+    position: absolute;
+    left: 0;
+    width: 30%;
+    height: 100%;
+    background-color: #434243;
+    z-index: 5;
+    border-right: 5px solid #a8fc64;
+    transition: all 0.5s;
+}
+
+.divLinks {
+    width: 100%;
+    height: 30%;
+    color: #b8b7b9;
+    display: grid;
+}
+
+.iconeFecharMenu {
+    float: right;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.iconeFecharMenu:hover {
+    transform: rotate(90deg);
+}
+
+.buttonFormMenu {
+    width: 100%;
+    height: 60px;
+    color: #e0e0e0;
+    font-size: 20px;
+    /* border: 2px solid white; */
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+.buttonFormMenu:hover {
+    background-color: #a8fc64;
+    color: #2e2d2d;
+    text-decoration: underline;
+}
