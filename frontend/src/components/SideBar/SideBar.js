@@ -16,7 +16,7 @@ const SideBar = ({ handleSideBar }) => {
                 <Link to={"/categorias"} className='buttonFormMenu'>
                     <p>Categorias</p>
                 </Link>
-                <Link to={"/tag"} className='buttonFormMenu'>
+                <Link to={"/tags"} className='buttonFormMenu'>
                     <p>Tags</p>
                 </Link>
             </div>
