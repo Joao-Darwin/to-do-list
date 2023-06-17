@@ -5,7 +5,7 @@
     height: 100%;
     background-color: #434243;
     z-index: 5;
-    border-right: 5px solid #a8fc64;
+    border-right: 7px solid #a8fc64;
     transition: all 0.5s;
 }
 
@@ -34,6 +34,10 @@
     /* border: 2px solid white; */
     text-decoration: none;
     transition: all 0.3s;
+}
+
+.buttonFormMenu p {
+    font-weight: bolder;
 }
 
 .buttonFormMenu:hover {
