@@ -1,11 +1,13 @@
 package projetopoo.demo.services;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import projetopoo.demo.entities.TagTarefa;
+import projetopoo.demo.entities.Tarefa;
 import projetopoo.demo.exceptions.DataBaseException;
 import projetopoo.demo.exceptions.ResourceNotFoundByNameException;
 import projetopoo.demo.exceptions.ResourceNotFoundException;
@@ -63,8 +65,25 @@ public class TagService {
 	//Método para deletar uma tag pelo seu ID
 	public void deleteById(Long id) {
 		try {
+			List<Tarefa> tarefas = findById(id).getTarefas();
+	        if (!tarefas.isEmpty()) {
+	            List<TagTarefa> tagsToRemove = new ArrayList<>();
+
+	            for (Tarefa tarefa : tarefas) {
+	                List<TagTarefa> tags = tarefa.getTagsTarefa();
+
+	                for (TagTarefa tag : tags) {
+	                    if (tag.getId() == id) {
+	                        tagsToRemove.add(tag);
+	                    }
+	                }
+
+	                tags.removeAll(tagsToRemove);
+	            }
+	        }
+			tarefas.clear();
 			tagRepository.deleteById(id);
-		} catch(IllegalArgumentException e) {
+		} catch (IllegalArgumentException e) {
 			throw new ResourceNotFoundException(id);
 		}
 	}

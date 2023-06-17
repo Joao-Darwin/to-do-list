@@ -57,8 +57,11 @@ public class TesteConfig implements CommandLineRunner{
 		
 		tarefa01.getTagsTarefa().add(tag02);
 		tarefa01.getTagsTarefa().add(tag03);
+		tarefa01.getTagsTarefa().add(tag01);
 		tarefa02.getTagsTarefa().add(tag01);
 		tarefa02.getTagsTarefa().add(tag03);
+		
+		tagRepository.saveAll(Arrays.asList(tag01, tag02, tag03));
 		
 		tarefaRepository.saveAll(Arrays.asList(tarefa01, tarefa02));
 		
