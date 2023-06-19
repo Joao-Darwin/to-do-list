@@ -7,6 +7,7 @@ import org.springframework.dao.OptimisticLockingFailureException;
 import org.springframework.stereotype.Service;
 
 import projetopoo.demo.entities.Tarefa;
+import projetopoo.demo.entities.enums.StatusTarefa;
 import projetopoo.demo.exceptions.DataBaseException;
 import projetopoo.demo.exceptions.ResourceNotFoundException;
 import projetopoo.demo.repositories.TarefaRepository;
@@ -73,5 +74,17 @@ public class TarefaService {
 		tarefa.setCategoria(novaTarefa.getCategoria());
 		tarefa.setImportancia(novaTarefa.getImportancia());
 		tarefa.setStatus(novaTarefa.getStatus());
+	}
+	
+	// Atualizar o status de tarefa pra concluido
+	public Tarefa updateStatusTarefa(Long id) {
+		try {
+			Tarefa tarefa = findById(id);
+			tarefa.setStatus(StatusTarefa.CONCLUIDA);
+			tarefaRepository.save(tarefa);
+			return tarefa;
+		} catch (OptimisticLockingFailureException e) {
+			throw new DataBaseException("Erro no banco de dados");
+		}
 	}
 }

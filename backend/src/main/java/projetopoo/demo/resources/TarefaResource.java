@@ -83,4 +83,16 @@ public class TarefaResource {
 			return ResponseEntity.status(HttpStatus.NOT_IMPLEMENTED).build();
 		}
 	}
+	
+	@PutMapping(value = "/{id}/concluir")
+	public ResponseEntity<Tarefa> updateTarefa(@PathVariable Long id) {
+		try {
+			Tarefa tarefa = tarefaService.updateStatusTarefa(id);
+			return ResponseEntity.status(HttpStatus.OK).body(tarefa);
+		} catch (ResourceNotFoundException e) {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+		} catch (DataBaseException e) {
+			return ResponseEntity.status(HttpStatus.NOT_IMPLEMENTED).build();
+		}
+	}
 }
