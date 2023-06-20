@@ -7,4 +7,9 @@
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
+} 
+
+.buttonFormCategoria {
+    width: 15%;
+    margin-bottom: 25px;
 }
