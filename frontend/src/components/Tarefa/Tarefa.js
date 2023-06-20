@@ -49,7 +49,7 @@ const Tarefa = ({ id, nome, descricao, dataCricao, dataConclusao, importancia, s
     // Formatar a Data DD/MM/YYYY
     const dataConclusaoFormat = (data) => {
         let date = new Date(data);
-        let novaData = `${(date.getDate() + 1) < 10 ? (`0${date.getDate() + 1}`) : (date.getDate() + 1)}/${(date.getMonth() + 2) < 10 ? (`0${date.getMonth() + 2}`) : (date.getMonth() + 2)}/${date.getFullYear()}`
+        let novaData = `${(date.getDate() + 1) < 10 ? (`0${date.getDate() + 1}`) : (date.getDate() + 1)}/${(date.getMonth() + 1) < 10 ? (`0${date.getMonth() + 1}`) : (date.getMonth() + 1)}/${date.getFullYear()}`
         return novaData;
     }
 

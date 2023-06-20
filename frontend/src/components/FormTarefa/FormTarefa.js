@@ -87,7 +87,7 @@ const FormTarefa = () => {
                         <select name='categoria' className='inputSelect' onChange={(e) => setCategoria(e.target.value)} value={categoria}>
                             {
                                 allCategories.map((value, index) => {
-                                    return <option style={{ textTransform: "uppercase" }} className='importanciaSelect' key={value.nome} value={(index + 1)}>{value.nome}</option>
+                                    return <option style={{ textTransform: "uppercase" }} className='importanciaSelect' key={value.nome} value={(value.id)}>{value.nome}</option>
                                 })
                             }
                         </select>
