@@ -1,7 +1,7 @@
 .divTarefas {
+    margin: auto;
     position: relative;
-    left: 35%;
-    width: 30%;
+    width: 50%;
     display: block;
     flex-wrap: wrap;
     justify-content: center;

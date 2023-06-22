@@ -4,10 +4,16 @@ import React, { useState } from 'react';
 import "./Tarefa.css"
 import openApi from '../../services/api';
 import FormTarefaUpdate from '../FormTarefaUpdate/FormTarefaUpdate';
+import TarefaDetails from '../TarefaDetails/TarefaDetails';
 
 const Tarefa = ({ id, nome, descricao, dataCricao, dataConclusao, importancia, status, categoria }) => {
 
     const [renderFormTarefaUpdate, setRenderFormTarefaUpdate] = useState(false);
+    const [showDetailsTarefa, setShowDetailsTarefa] = useState(false);
+
+    const closeDetailsTarefa = () => {
+        setShowDetailsTarefa(false);
+    }
 
     const [colorBackground] = useState(() => {
         if (status === 'PRA_FAZER') {
@@ -60,7 +66,7 @@ const Tarefa = ({ id, nome, descricao, dataCricao, dataConclusao, importancia, s
     const concluirTarefa = async () => {
         try {
             const res = await openApi.put(`/tarefa/${id}/concluir`)
-            if(res.status === 404) {
+            if (res.status === 404) {
                 alert("Tarefa não encontrada!");
             }
             window.location.reload();
@@ -70,30 +76,46 @@ const Tarefa = ({ id, nome, descricao, dataCricao, dataConclusao, importancia, s
     }
 
     return (
-        renderFormTarefaUpdate === false ? (
-            <div className='tarefa' style={{ backgroundColor: colorBackground }}>
-                <div>
-                    <p>Nome: <strong>{nome}</strong></p>
-                    <p>Status: <strong>{statusFormat(status)}</strong></p>
-                    <p>Data conclusão: <strong>{dataConclusaoFormat(dataConclusao)}</strong></p>
-                </div>
-                <div >
-                    <img onClick={concluirTarefa} className='icone' alt='Ícone de concluir tarefa' src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAACXBIWXMAAAsTAAALEwEAmpwYAAABW0lEQVR4nO3WP0scYRDH8Y+FEbUJemJhk0JIF7CwEEHRVnwBdnY2/iltU8Zar3gsrZJ0dir4BtRe7CxsFI2QBCRweGHhKQT3ztu7exZBfzDFPs/sfJ/dmZ0d3kUFG6gidGg7WI8xm2oO96h32e4w3Qg6kgia2TU+oScPvJEI+oApzGMlD1xNAH3EEj7jV8z5M4UE4K8YwkW8DmWAf+IDjp+sJQefYiAnZkgJvsQoNnP2Qirwb3zBAmplgWtYxAT+NvAJRcF/WgBnrXEMV018QhHwZey1B00CZj1gEGcvHC4UfeJt9OFHzt4hevG9hbcS2snxXoTvPlk7x0d8a7EOQrvFtY9+bOEW41guUIChk6o+ivnMCmkW/8oC13GCSdwUuKfere/4saB/vayfxOsHV0sA7+SB10sAr+aBK3E8SQW9xbAGmo2jaArojBeUnWot5qMbA/1anLveuP4DLXlJbCngazsAAAAASUVORK5CYII='></img>
-                    <img onClick={deleteTarefa} className='icone' alt='Ícone excluir tarefa' src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAWklEQVR4nGNgGAWDGBxnYGD4j4aPUcvww1gMJxcfHiiLD1ErNIYv+E8lPGoxQTAa1P9HExfDaHZiGC1AGEaLTKLAyCsyH1PB0kfkWOxJoeUgSz3IsXgUDA8AAHlcbV33qhrwAAAAAElFTkSuQmCC" />
-                    <img onClick={() => setRenderFormTarefaUpdate(true)} className='icone' alt='Ícone atualizar farefa' src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAyElEQVR4nO3WP2oCQRSA8Z/rJfQWggew8RoWYuElZNOn1ANoKqvYClbeIRewtAgklZDGlYURtkuQnQnIfPBgmCk+3ps3f3hSOpjhgB1GKaQF1vjEAkv8xJbfpRXmjfkV3lNI67hgHNZK7FNIm/J5KPs0lbQZm9BwrUo3v0i36GbpI+TyVrmR2qDI51S+kVqgyI0kYiPVvPzhEa+3oXU+8J1a2sMVAxxj/xyaTHAK4yG+Ymd65w3nIK9C2cvYUngN8jrzfmzZv3ID+uLBiRXSV1IAAAAASUVORK5CYII="></img>
-                </div>
-            </div>
-        ) : (
-            <FormTarefaUpdate
-                id={id}
+        showDetailsTarefa ? (
+            <TarefaDetails
+                closeDetailsTarefa={closeDetailsTarefa}
+                idTarefa={id}
                 nomeTarefa={nome}
+                categoriaTarefa={categoria}
                 descricaoTarefa={descricao}
-                dataConclusaoTarefa={dataConclusao}
                 importanciaTarefa={importancia}
                 statusTarefa={status}
-                categoriaTarefa={categoria}
-                cancelUpdate={cancelUpdate}
+                dataCricaoTarefa={dataCricao}
+                dataConclusaoTarefa={dataConclusao}
+                key={id}
             />
+        ) : (
+            renderFormTarefaUpdate === false ? (
+                <div className='tarefa' style={{ backgroundColor: colorBackground }}>
+                    <div>
+                        <p>Nome: <strong>{nome}</strong></p>
+                        <p>Status: <strong>{statusFormat(status)}</strong></p>
+                        <p>Data conclusão: <strong>{dataConclusaoFormat(dataConclusao)}</strong></p>
+                    </div>
+                    <div >
+                        <img onClick={() => setShowDetailsTarefa(true)} className='icone' alt='Ícone detalhes da tarefa' src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAyklEQVR4nO2WvQ4BQRSFPz+Nd6BQkEiodHQbXkAlElHZp8FD8ARaz6Am9FvS0ApZmeJm6t2zxeyX3GLmFidzZ+6dAyFSBVbABpgqhXfA18TC5GZAnFPw9IRPRvjs5bIMLt7GXiUcmVPfgDZCGkAHqClFS8JgAMyBllI0Bj6und7A2OR6wDCnIPEa+6gaIElRwmtT6hcwUpU6pe8eV/O/KinJ+FvsAnWERMYI3JVG4Oo19kE1QB5Fmb2tt5EOEom9rQBLZ+gnqvslOH62CNgh5oxgOgAAAABJRU5ErkJggg==' />
+                        <img onClick={concluirTarefa} className='icone' alt='Ícone de concluir tarefa' src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAACXBIWXMAAAsTAAALEwEAmpwYAAABW0lEQVR4nO3WP0scYRDH8Y+FEbUJemJhk0JIF7CwEEHRVnwBdnY2/iltU8Zar3gsrZJ0dir4BtRe7CxsFI2QBCRweGHhKQT3ztu7exZBfzDFPs/sfJ/dmZ0d3kUFG6gidGg7WI8xm2oO96h32e4w3Qg6kgia2TU+oScPvJEI+oApzGMlD1xNAH3EEj7jV8z5M4UE4K8YwkW8DmWAf+IDjp+sJQefYiAnZkgJvsQoNnP2Qirwb3zBAmplgWtYxAT+NvAJRcF/WgBnrXEMV018QhHwZey1B00CZj1gEGcvHC4UfeJt9OFHzt4hevG9hbcS2snxXoTvPlk7x0d8a7EOQrvFtY9+bOEW41guUIChk6o+ivnMCmkW/8oC13GCSdwUuKfere/4saB/vayfxOsHV0sA7+SB10sAr+aBK3E8SQW9xbAGmo2jaArojBeUnWot5qMbA/1anLveuP4DLXlJbCngazsAAAAASUVORK5CYII='></img>
+                        <img onClick={deleteTarefa} className='icone' alt='Ícone excluir tarefa' src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAWklEQVR4nGNgGAWDGBxnYGD4j4aPUcvww1gMJxcfHiiLD1ErNIYv+E8lPGoxQTAa1P9HExfDaHZiGC1AGEaLTKLAyCsyH1PB0kfkWOxJoeUgSz3IsXgUDA8AAHlcbV33qhrwAAAAAElFTkSuQmCC" />
+                        <img onClick={() => setRenderFormTarefaUpdate(true)} className='icone' alt='Ícone atualizar farefa' src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAyElEQVR4nO3WP2oCQRSA8Z/rJfQWggew8RoWYuElZNOn1ANoKqvYClbeIRewtAgklZDGlYURtkuQnQnIfPBgmCk+3ps3f3hSOpjhgB1GKaQF1vjEAkv8xJbfpRXmjfkV3lNI67hgHNZK7FNIm/J5KPs0lbQZm9BwrUo3v0i36GbpI+TyVrmR2qDI51S+kVqgyI0kYiPVvPzhEa+3oXU+8J1a2sMVAxxj/xyaTHAK4yG+Ymd65w3nIK9C2cvYUngN8jrzfmzZv3ID+uLBiRXSV1IAAAAASUVORK5CYII="></img>
+                    </div>
+                </div>
+            ) : (
+                <FormTarefaUpdate
+                    id={id}
+                    nomeTarefa={nome}
+                    descricaoTarefa={descricao}
+                    dataConclusaoTarefa={dataConclusao}
+                    importanciaTarefa={importancia}
+                    statusTarefa={status}
+                    categoriaTarefa={categoria}
+                    cancelUpdate={cancelUpdate}
+                />
+            )
         )
     )
 }

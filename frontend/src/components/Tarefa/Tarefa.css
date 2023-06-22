@@ -1,7 +1,8 @@
 .tarefa {
+    margin: auto;
     text-align: left;
     padding: 0.2em;
-    width: 100%;
+    width: 60%;
     color: black;
     background-color: #ffffff;
     border-radius: 10px;
@@ -17,7 +18,7 @@
 
 .tarefa:hover {
     bottom: 5px;
-    width: 101%;
+    width: 61%;
 }
 
 .icone {

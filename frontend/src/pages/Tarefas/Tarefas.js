@@ -29,7 +29,7 @@ const Tarefas = () => {
                             id={tarefa.id}
                             nome={tarefa.nome}
                             descricao={tarefa.descricao}
-                            dataCricao={tarefa.dataCricao}
+                            dataCricao={tarefa.dataCriacao}
                             dataConclusao={tarefa.dataConclusao}
                             status={tarefa.status}
                             importancia={tarefa.importancia}
