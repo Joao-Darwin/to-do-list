@@ -1,10 +1,25 @@
 .divTarefaDetails {
     width: 100%;
-    height: 500px;
-    background-color: aqua;
+    height: auto;
+    background-color: #2a2e42;
     border: 2px solid white;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 10px 10px rgba(0, 0, 0, 0.418);
     position: absolute;
     z-index: 3;
-    justify-content: center;
-    align-items: center;
+    color: white;
+    margin: auto;
+}
+
+.detailsItem {
+    margin-bottom: 10px;
+}
+
+.detailsItem strong {
+    display: block;
+}
+
+.detailsItem p {
+    font-size: 20px;
 }
