@@ -67,7 +67,7 @@ public class TarefaService {
 	}
 	
 	//Atualizar uma tarefa baseado em outra
-	public void atualizarUmaTarefa(Tarefa tarefa, Tarefa novaTarefa) {
+	private void atualizarUmaTarefa(Tarefa tarefa, Tarefa novaTarefa) {
 		tarefa.setNome(novaTarefa.getNome());
 		tarefa.setDescricao(novaTarefa.getDescricao());
 		tarefa.setDataConclusao(novaTarefa.getDataConclusao());
