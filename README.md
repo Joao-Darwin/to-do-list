@@ -16,7 +16,7 @@ A programação orientada a objeto será implemenetada na criação das 'entidad
 ![Modelo Conceitual](https://github.com/Joao-Darwin/repoImgs/blob/main/Imgs%20-%20Web%20Service%20SpringBoot/camadasLogicas.png)
 
 ## Diagrama de Classes (BackEnd)
-![Diagrama de Classes](https://github.com/Joao-Darwin/repoImgs/blob/main/Imgs%20-%20Projeto%20POO%20To%20do%20List/DiagramaDeClasses.png)
+![Diagrama de Classes](https://github.com/Joao-Darwin/repoImgs/blob/main/Imgs%20-%20Projeto%20POO%20To%20do%20List/DiagramaDeClasses%20atualizado.png)
 
 ## Tecnologias usadas
 ### Back-End
@@ -26,13 +26,20 @@ A programação orientada a objeto será implemenetada na criação das 'entidad
 - JPA (Persistência dos Dados no Banco de Dados)
 - Maven (Gerênciador de Pacotes)
 - H2 DataBase (Banco de Dados Teste)
-- MySQL (Banco de Dados produção)
+- PostgresSQL (Banco de Dados produção)
 
 ### Front-End
-- React
+- React (Biblioteca)
+- Npm (Gerênciador de depedências)
 
 ## Como executar o Projeto
-### Pré Requisitos: Java 17
+### Pré Requisitos: Java 17 e PostgresSQL
+
+## Banco de Dados
+### Criar
+```sql
+CREATE DATABASE ProjetoPOO;
+```
 
 ## Back-End
 ### Clonar o Repositório
@@ -43,7 +50,6 @@ git clone https://github.com/ifpb-cz-ads/poo-2023-1-ai-Joao-Darwin.git Gerenciad
 ```bash
 cd GerenciadorTarefas/
 ```
-
 ### Entrar na pasta backend
 ```bash
 cd backend/
