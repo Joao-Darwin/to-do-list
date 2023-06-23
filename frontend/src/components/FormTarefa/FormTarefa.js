@@ -93,7 +93,8 @@ const FormTarefa = () => {
                         </select>
                     </label>
                 </div>
-                <input className='buttonForm' type='submit' value="Adicionar tarefa" />
+                <img title='Limpar' onClick={cleanInputs} className='iconFormTarefa' alt='limpar inputs' src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAwElEQVR4nO3RPwrCMBTH8VxBcXdwFzyAOCj2j7eoeAZv0d0reAodvEBdXHsKu32l8MBQl0dJQqT9wW8JL3zIizE9AqyBWroxoQLc+eYREn5a8GuEvYVx1aHCuOohrPoInKUn89cBFtZrXHWugQ+4z3Zw8E4Dz9pBx52aaAOsgKvjLjVw7uGP91HDmQc4iRpOO5duwAWoFEAls+0dO1kfuJDzUgGXMlt0zlNXcANMpI0Czp3B1vxbAatWnXiAf178AYc2eHO0+zA/AAAAAElFTkSuQmCC'/>
+                <input className='buttonForm buttonFormTarefa' type='submit' value="Adicionar tarefa" />
             </form>
         </>
     )

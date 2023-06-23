@@ -71,3 +71,12 @@
 .buttonForm:hover {
     background-color: #1a6437;
 }
+
+.buttonFormTarefa {
+    width: 60%;
+}
+
+.iconFormTarefa {
+    float: left;
+    cursor: pointer;
+}

@@ -18,7 +18,7 @@ const Tag = ({id, name}) => {
 
     return (
         <div className="divTag">
-            <p><strong>{name}</strong></p>
+            <p><strong>{name.toUpperCase()}</strong></p>
             <div>
                 <img style={{cursor: "pointer"}} onClick={deleteTag} className='icone' alt='Ícone excluir tag' src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAWklEQVR4nGNgGAWDGBxnYGD4j4aPUcvww1gMJxcfHiiLD1ErNIYv+E8lPGoxQTAa1P9HExfDaHZiGC1AGEaLTKLAyCsyH1PB0kfkWOxJoeUgSz3IsXgUDA8AAHlcbV33qhrwAAAAAElFTkSuQmCC" />
             </div>
