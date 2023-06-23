@@ -6,7 +6,7 @@ const Categoria = ({ id, nome }) => {
 
     const deleteCategoria = async () => {
         try {
-            let response = await openApi.delete(`/categoria/${id}`);
+            let response = await openApi.delete(`/categorias/${id}`);
             if(response.status === 200) {
                 window.location.reload();
                 alert("Categoria excluída!");

@@ -10,7 +10,7 @@ const Tarefas = () => {
     // Carrega as Tarefas
     useEffect(() => {
         const FindAllTarefas = async () => {
-            const tarefas = (await openApi.get("/tarefa")).data;
+            const tarefas = (await openApi.get("/tarefas")).data;
             setTarefas(tarefas);
         }
         FindAllTarefas();

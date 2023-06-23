@@ -9,7 +9,7 @@ const FormCategoria = ({ cancelCriarCategoria }) => {
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
-            const response = await openApi.post("/categoria", {
+            const response = await openApi.post("/categorias", {
                 nome: nomeCategoria
             })
             if(response.status === 201) {

@@ -23,7 +23,7 @@ import projetopoo.demo.exceptions.ResourceNotFoundException;
 import projetopoo.demo.services.CategoriaService;
 
 @RestController
-@RequestMapping("/categoria")
+@RequestMapping("/categorias")
 @CrossOrigin(origins = "http://localhost:3000")
 public class CategoriaResource {
 

@@ -23,7 +23,7 @@ import projetopoo.demo.exceptions.ResourceNotFoundException;
 import projetopoo.demo.services.LembreteService;
 
 @RestController
-@RequestMapping("/lembrete")
+@RequestMapping("/lembretes")
 @CrossOrigin(origins = "http://localhost:3000")
 public class LembreteResource {
 

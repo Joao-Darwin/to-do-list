@@ -25,7 +25,7 @@ const FormTarefaUpdate = ({ id, nomeTarefa, descricaoTarefa, dataConclusaoTarefa
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
-            const response = await openApi.put(`/tarefa/${id}`, {
+            const response = await openApi.put(`/tarefas/${id}`, {
                 "nome": nome,
                 "descricao": descricao,
                 "dataConclusao": `${dataConclusao}T00:00:00Z`,
@@ -47,7 +47,7 @@ const FormTarefaUpdate = ({ id, nomeTarefa, descricaoTarefa, dataConclusaoTarefa
     // Buscar todas as categorias
     useEffect(() => {
         async function findAllCategories() {
-            setAllCategories((await openApi.get("/categoria")).data);
+            setAllCategories((await openApi.get("/categorias")).data);
         }
         findAllCategories();
     }, [])

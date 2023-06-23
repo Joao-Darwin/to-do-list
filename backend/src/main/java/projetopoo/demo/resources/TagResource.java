@@ -22,7 +22,7 @@ import projetopoo.demo.exceptions.ResourceNotFoundException;
 import projetopoo.demo.services.TagService;
 
 @RestController
-@RequestMapping("/tag")
+@RequestMapping("/tags")
 @CrossOrigin(origins = "http://localhost:3000")
 public class TagResource {
 	

@@ -15,7 +15,7 @@ const Categorias = () => {
 
     useEffect(() => {
         async function loadCategorias() {
-            const allCategories = (await openApi.get("/categoria")).data;
+            const allCategories = (await openApi.get("/categorias")).data;
             setCategorias(allCategories);
         }
         loadCategorias();

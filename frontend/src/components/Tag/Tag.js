@@ -6,7 +6,7 @@ const Tag = ({id, name}) => {
 
     const deleteTag = async () => {
         try {
-            const res = await openApi.delete(`/tag/${id}`);
+            const res = await openApi.delete(`/tags/${id}`);
             if(res.status === 200) {
                 window.location.reload();
                 alert("Tag excluida");

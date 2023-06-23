@@ -29,7 +29,7 @@ const Tarefa = ({ id, nome, descricao, dataCricao, dataConclusao, importancia, s
 
     const deleteTarefa = async () => {
         try {
-            const res = await openApi.delete(`tarefa/${id}`);
+            const res = await openApi.delete(`/tarefas/${id}`);
             window.location.reload();
             if (res.status === 200) {
                 alert("Tarefa deletada!");
@@ -65,7 +65,7 @@ const Tarefa = ({ id, nome, descricao, dataCricao, dataConclusao, importancia, s
 
     const concluirTarefa = async () => {
         try {
-            const res = await openApi.put(`/tarefa/${id}/concluir`)
+            const res = await openApi.put(`/tarefas/${id}/concluir`)
             if (res.status === 404) {
                 alert("Tarefa não encontrada!");
             }

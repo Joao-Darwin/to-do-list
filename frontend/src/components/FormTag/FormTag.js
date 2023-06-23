@@ -8,7 +8,7 @@ const FormTag = ({cancelCriarTag}) => {
 
     const handleSubmit = async () => {
         try {
-            const response = await openApi.post('/tag', {
+            const response = await openApi.post('/tags', {
                 nome: tagName
             })
             if(response.status === 200) {

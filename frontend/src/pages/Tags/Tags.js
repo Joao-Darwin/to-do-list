@@ -18,7 +18,7 @@ const Tags = () => {
 
     useEffect(() => {
         const loadTags = async () => {
-            const { data } = await openApi.get("/tag");
+            const { data } = await openApi.get("/tags");
             setTags(data);
         }
         loadTags();

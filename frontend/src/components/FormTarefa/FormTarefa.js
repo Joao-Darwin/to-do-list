@@ -27,7 +27,7 @@ const FormTarefa = () => {
         console.log("Importancia: ", importancia);
         console.log("Categoria: ", categoria);
         try {
-            let response = await openApi.post("/tarefa", {
+            let response = await openApi.post("/tarefas", {
                 "nome": nomeAtividade,
                 "descricao": descricao,
                 "dataConclusao": `${dataConclusao}T00:00:00Z`,
@@ -55,7 +55,7 @@ const FormTarefa = () => {
     let [allCategories, setAllCategories] = useState([]);
     useEffect(() => {
         async function findAllCategories() {
-            setAllCategories((await openApi.get("/categoria")).data);
+            setAllCategories((await openApi.get("/categorias")).data);
         }
         findAllCategories();
     }, [])
