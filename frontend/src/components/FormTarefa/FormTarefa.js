@@ -62,7 +62,7 @@ const FormTarefa = () => {
 
     return (
         <>
-            <form className='form' onSubmit={handleSubmit}>
+            <form className='form formTarefa' onSubmit={handleSubmit}>
                 <label className='labels'>
                     <input className='inputText' required type='text' placeholder='Nome Atividade' autoFocus onChange={(e) => setNomeAtividade(e.target.value)} value={nomeAtividade}></input>
                 </label>

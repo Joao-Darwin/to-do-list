@@ -3,6 +3,19 @@
     margin: auto;
 }
 
+.formTarefa {
+    background-color: #2a2e42;
+    border: 2px solid white;
+    padding: 30px;
+    border-radius: 10px;
+    z-index: 2;
+    align-items: center;
+    text-align: center;
+    margin: auto;
+    margin-bottom: 15px;
+    box-shadow: 10px 10px rgba(0, 0, 0, 0.418);
+}
+
 .divInputsSelect {
     width: 100%;
     display: flex;

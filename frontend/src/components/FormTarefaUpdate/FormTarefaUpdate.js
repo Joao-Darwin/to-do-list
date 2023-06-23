@@ -13,7 +13,6 @@ function formatDate (data) {
 
 const FormTarefaUpdate = ({ id, nomeTarefa, descricaoTarefa, dataConclusaoTarefa, importanciaTarefa, statusTarefa, categoriaTarefa, cancelUpdate }) => {
  
-    console.log(importanciaTarefa)
     const [nome, setNome] = useState(nomeTarefa);
     const [descricao, setDescricao] = useState(descricaoTarefa);
     const [dataConclusao, setDataConclusao] = useState(formatDate(dataConclusaoTarefa));
@@ -71,7 +70,7 @@ const FormTarefaUpdate = ({ id, nomeTarefa, descricaoTarefa, dataConclusaoTarefa
             <h1>Atualizar Tarefa</h1>
             <form onSubmit={handleSubmit}>
                 <label className='labels'>
-                    <input className='inputText' required type='text' placeholder='Nome Atividade' autoFocus onChange={(e) => setNome(e.target.value)} value={nome}></input>
+                    <input className='inputText inputTextName' required type='text' placeholder='Nome Atividade' autoFocus onChange={(e) => setNome(e.target.value)} value={nome}></input>
                 </label>
                 <label className='labels'>
                     <textarea cols="70" rows="3" placeholder="Descrição da Tarefa" onChange={(e) => setDescricao(e.target.value)} value={descricao}></textarea>

@@ -1,7 +1,15 @@
 import React from 'react';
 import './TarefaDetails.css'
+import moment from 'moment'
+
+const diasParaConclusao = (date) => {
+    let hoje = moment();
+    let diaDeConclusao = moment(date).diff(hoje, 'days');
+    return diaDeConclusao
+}
 
 const TarefaDetails = ({ idTarefa, nomeTarefa, descricaoTarefa, dataCricaoTarefa, dataConclusaoTarefa, importanciaTarefa, statusTarefa, categoriaTarefa, closeDetailsTarefa }) => {
+
     return (
         <div className='divTarefaDetails'>
             <h2>Detalhes da Tarefa <strong>#{idTarefa}</strong></h2>
@@ -16,11 +24,15 @@ const TarefaDetails = ({ idTarefa, nomeTarefa, descricaoTarefa, dataCricaoTarefa
             <div style={{display: 'flex', justifyContent: 'space-between', width: '50%', margin: 'auto'}}>
                 <div className="detailsItem">
                     <strong>Data de Criação:</strong>
-                    <p>{dataCricaoTarefa}</p>
+                    <p>{moment(dataCricaoTarefa).format('DD-MM-YYYY')}</p>
                 </div>
                 <div className="detailsItem">
                     <strong>Data de Conclusão:</strong>
-                    <p>{dataConclusaoTarefa}</p>
+                    <p>{moment(dataConclusaoTarefa).format('DD-MM-YYYY')}</p>
+                </div>
+                <div className="detailsItem">
+                    <strong>Dias para Conclusão:</strong>
+                    <p>{diasParaConclusao(dataConclusaoTarefa)}</p>
                 </div>
             </div>
             <div className="detailsItem">
