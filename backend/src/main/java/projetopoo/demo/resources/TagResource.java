@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import projetopoo.demo.entities.TagTarefa;
+import projetopoo.demo.entities.Tarefa;
 import projetopoo.demo.exceptions.DataBaseException;
 import projetopoo.demo.exceptions.ResourceNotFoundByNameException;
 import projetopoo.demo.exceptions.ResourceNotFoundException;
@@ -44,6 +45,17 @@ public class TagResource {
 		try {
 			TagTarefa tag = tagService.findById(id);
 			return ResponseEntity.status(HttpStatus.OK).body(tag);
+		} catch (ResourceNotFoundException e) {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+		}
+	}
+	
+	@GetMapping(value = "/{id}/tarefas")
+	public ResponseEntity<List<Tarefa>> findTarefasByTag(@PathVariable Long id) {
+		try {
+			TagTarefa tag = tagService.findById(id);
+			List<Tarefa> tarefasTag = tag.getTarefas();
+			return ResponseEntity.status(HttpStatus.FOUND).body(tarefasTag);
 		} catch (ResourceNotFoundException e) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
 		}
