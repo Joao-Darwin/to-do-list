@@ -24,7 +24,7 @@ import projetopoo.demo.services.LembreteService;
 
 @RestController
 @RequestMapping("/lembretes")
-@CrossOrigin(origins = "https://projectoofrontenddarwin.up.railway.app:5433")
+@CrossOrigin(origins = "*")
 public class LembreteResource {
 
 	@Autowired
