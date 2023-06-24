@@ -24,7 +24,7 @@ import projetopoo.demo.services.TarefaService;
 
 @RestController
 @RequestMapping("/tarefas")
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "https://projectoofrontenddarwin.up.railway.app:5433")
 public class TarefaResource {
 
 	@Autowired

@@ -24,7 +24,7 @@ import projetopoo.demo.services.CategoriaService;
 
 @RestController
 @RequestMapping("/categorias")
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "https://projectoofrontenddarwin.up.railway.app:5433")
 public class CategoriaResource {
 
 	@Autowired

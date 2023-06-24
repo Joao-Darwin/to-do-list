@@ -23,7 +23,7 @@ import projetopoo.demo.services.TagService;
 
 @RestController
 @RequestMapping("/tags")
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "https://projectoofrontenddarwin.up.railway.app:5433")
 public class TagResource {
 	
 	@Autowired
