@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const openApi = axios.create({
-    baseURL: "https://project-oo-production.up.railway.app"
+    baseURL: "http://localhost:8080"
 })
 
 export default openApi;
