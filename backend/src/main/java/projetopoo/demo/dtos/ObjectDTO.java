@@ -22,5 +22,5 @@ public abstract class ObjectDTO {
 		this.nome = nome;
 	}
 	
-	public abstract String toString();
+	public abstract String imprimir();
 }

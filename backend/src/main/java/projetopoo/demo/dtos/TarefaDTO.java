@@ -18,7 +18,7 @@ public class TarefaDTO extends ObjectDTO{
 	}
 
 	@Override
-	public String toString() {
+	public String imprimir() {
 		StringBuilder sb = new StringBuilder();
 		sb.append("Id: " + getId() + "\n");
 		sb.append("Nome: " + getNome() + "\n");
