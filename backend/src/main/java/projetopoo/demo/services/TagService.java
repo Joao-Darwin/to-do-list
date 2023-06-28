@@ -40,14 +40,7 @@ public class TagService implements Utilitarios{
 	
 	//Método para encontrar uma tag pelo nome
 	public TagTarefa findByNome(String nome) {
-		TagTarefa tagTarefa = null;
-		List<TagTarefa> listTag = tagRepository.findAll();
-		for(TagTarefa tag : listTag) {
-			int result = tag.getNome().compareToIgnoreCase(nome);
-			if(result == 0) {
-				tagTarefa = tag;
-			}
-		}
+		TagTarefa tagTarefa = tagRepository.findByNome(nome);
 		if(tagTarefa == null) {
 			throw new ResourceNotFoundByNameException(nome);
 		}
