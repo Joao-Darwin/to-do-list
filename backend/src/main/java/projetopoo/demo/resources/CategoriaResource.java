@@ -16,8 +16,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import projetopoo.demo.dtos.TarefaDTO;
 import projetopoo.demo.entities.Categoria;
-import projetopoo.demo.entities.Tarefa;
 import projetopoo.demo.exceptions.DataBaseException;
 import projetopoo.demo.exceptions.ResourceNotFoundException;
 import projetopoo.demo.services.CategoriaService;
@@ -53,9 +53,9 @@ public class CategoriaResource {
 	}
 	
 	@GetMapping(value = "/{id}/tarefas")
-	public ResponseEntity<List<Tarefa>> findTarefaByCategoria(@PathVariable Long id) {
+	public ResponseEntity<List<TarefaDTO>> findTarefaByCategoria(@PathVariable Long id) {
 		try {
-			List<Tarefa> listTarefas = categoriaService.findTarefasByCategoria(id);
+			List<TarefaDTO> listTarefas = categoriaService.findTarefasDTOByCategoria(id);
 			return ResponseEntity.status(HttpStatus.OK).body(listTarefas);
 		} catch (ResourceNotFoundException e) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();

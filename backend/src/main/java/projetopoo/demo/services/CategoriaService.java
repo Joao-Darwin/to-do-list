@@ -1,10 +1,12 @@
 package projetopoo.demo.services;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import projetopoo.demo.dtos.TarefaDTO;
 import projetopoo.demo.entities.Categoria;
 import projetopoo.demo.entities.Tarefa;
 import projetopoo.demo.exceptions.DataBaseException;
@@ -41,6 +43,20 @@ public class CategoriaService implements Utilitarios{
 		try {
 			Categoria categoria = findById(id);
 			return categoria.getTarefas();
+		} catch (IllegalArgumentException e) {
+			throw new ResourceNotFoundException(id);
+		}
+	}
+	
+	public List<TarefaDTO> findTarefasDTOByCategoria(Long id) {
+		try {
+			Categoria categoria = findById(id);
+			List<TarefaDTO> tarefasDto = new ArrayList<>();
+			for(Tarefa tarefa : categoria.getTarefas()) {
+				TarefaDTO tarefadto = new TarefaDTO(tarefa.getId(), tarefa.getNome(), tarefa.getDescricao());
+				tarefasDto.add(tarefadto);
+			}
+			return tarefasDto;
 		} catch (IllegalArgumentException e) {
 			throw new ResourceNotFoundException(id);
 		}

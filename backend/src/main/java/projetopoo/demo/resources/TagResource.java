@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import projetopoo.demo.dtos.TarefaDTO;
 import projetopoo.demo.entities.TagTarefa;
-import projetopoo.demo.entities.Tarefa;
 import projetopoo.demo.exceptions.DataBaseException;
 import projetopoo.demo.exceptions.ResourceNotFoundByNameException;
 import projetopoo.demo.exceptions.ResourceNotFoundException;
@@ -51,10 +51,9 @@ public class TagResource {
 	}
 	
 	@GetMapping(value = "/{id}/tarefas")
-	public ResponseEntity<List<Tarefa>> findTarefasByTag(@PathVariable Long id) {
+	public ResponseEntity<List<TarefaDTO>> findTarefasByTag(@PathVariable Long id) {
 		try {
-			TagTarefa tag = tagService.findById(id);
-			List<Tarefa> tarefasTag = tag.getTarefas();
+			List<TarefaDTO> tarefasTag = tagService.findTarefasDTOByTag(id);
 			return ResponseEntity.status(HttpStatus.FOUND).body(tarefasTag);
 		} catch (ResourceNotFoundException e) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();

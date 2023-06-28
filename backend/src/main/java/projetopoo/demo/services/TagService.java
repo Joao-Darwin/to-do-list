@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import projetopoo.demo.dtos.TarefaDTO;
 import projetopoo.demo.entities.TagTarefa;
 import projetopoo.demo.entities.Tarefa;
 import projetopoo.demo.exceptions.DataBaseException;
@@ -77,6 +78,20 @@ public class TagService implements Utilitarios{
 	        }
 			tarefas.clear();
 			tagRepository.deleteById(id);
+		} catch (IllegalArgumentException e) {
+			throw new ResourceNotFoundException(id);
+		}
+	}
+	
+	public List<TarefaDTO> findTarefasDTOByTag(Long id) {
+		try {
+			TagTarefa tag = findById(id);
+			List<TarefaDTO> tarefasDto = new ArrayList<>();
+			for(Tarefa tarefa : tag.getTarefas()) {
+				TarefaDTO tarefaDto = new TarefaDTO(tarefa.getId(),tarefa.getNome(), tarefa.getDescricao());
+				tarefasDto.add(tarefaDto);
+			}
+			return tarefasDto;
 		} catch (IllegalArgumentException e) {
 			throw new ResourceNotFoundException(id);
 		}
