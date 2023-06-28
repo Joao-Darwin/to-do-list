@@ -10,10 +10,11 @@ import projetopoo.demo.entities.Tarefa;
 import projetopoo.demo.entities.enums.StatusTarefa;
 import projetopoo.demo.exceptions.DataBaseException;
 import projetopoo.demo.exceptions.ResourceNotFoundException;
+import projetopoo.demo.interfaces.Utilitarios;
 import projetopoo.demo.repositories.TarefaRepository;
 
 @Service
-public class TarefaService {
+public class TarefaService implements Utilitarios{
 	
 	@Autowired
 	private TarefaRepository tarefaRepository;

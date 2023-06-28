@@ -8,10 +8,11 @@ import org.springframework.stereotype.Service;
 import projetopoo.demo.entities.Lembrete;
 import projetopoo.demo.exceptions.DataBaseException;
 import projetopoo.demo.exceptions.ResourceNotFoundException;
+import projetopoo.demo.interfaces.Utilitarios;
 import projetopoo.demo.repositories.LembreteRepository;
 
 @Service
-public class LembreteService {
+public class LembreteService implements Utilitarios{
 
 	@Autowired
 	private LembreteRepository lembreteRepository;

@@ -11,10 +11,11 @@ import projetopoo.demo.entities.Tarefa;
 import projetopoo.demo.exceptions.DataBaseException;
 import projetopoo.demo.exceptions.ResourceNotFoundByNameException;
 import projetopoo.demo.exceptions.ResourceNotFoundException;
+import projetopoo.demo.interfaces.Utilitarios;
 import projetopoo.demo.repositories.TagRepository;
 
 @Service
-public class TagService {
+public class TagService implements Utilitarios{
 
 	@Autowired
 	private TagRepository tagRepository;
