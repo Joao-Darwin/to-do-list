@@ -16,7 +16,7 @@ A programação orientada a objeto será implemenetada na criação das 'entidad
 ![Modelo Conceitual](https://github.com/Joao-Darwin/repoImgs/blob/main/Imgs%20-%20Web%20Service%20SpringBoot/camadasLogicas.png)
 
 ## Diagrama de Classes (BackEnd)
-![Diagrama de Classes](https://github.com/Joao-Darwin/repoImgs/blob/main/Imgs%20-%20Projeto%20POO%20To%20do%20List/DiagramaDeClasses%20atualizado.png)
+![Diagrama de Classes](https://github.com/Joao-Darwin/repoImgs/blob/main/Imgs%20-%20Projeto%20POO%20To%20do%20List/DiagramaDeClasses2.png)
 
 ## Tecnologias usadas
 ### Back-End
