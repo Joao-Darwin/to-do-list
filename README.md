@@ -1,5 +1,7 @@
 # Gerênciador de Tarefas Java
 
+[![NPM](https://img.shields.io/npm/l/react)](https://github.com/Joao-Darwin/to-do-list/blob/main/LICENSE)
+
 ## Sobre o Projeto
 Um mini-sistema que permite aos usuários criar e gerenciar listas de tarefas, definir prazos, adicionar lembretes e categorizar as tarefas de acordo com a importância.
 
