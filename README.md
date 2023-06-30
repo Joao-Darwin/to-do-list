@@ -44,7 +44,7 @@ CREATE DATABASE ProjetoPOO;
 ## Back-End
 ### Clonar o Repositório
 ```bash
-git clone https://github.com/ifpb-cz-ads/poo-2023-1-ai-Joao-Darwin.git GerenciadorTarefas
+git clone https://github.com/Joao-Darwin/to-do-list.git GerenciadorTarefas
 ```
 ### Entrar na pasta raiz
 ```bash
