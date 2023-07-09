@@ -19,6 +19,9 @@ const SideBar = ({ handleSideBar }) => {
                 <Link to={"/tags"} className='buttonFormMenu'>
                     <p onClick={handleSideBar}>Tags</p>
                 </Link>
+                <Link to={"/lembretes"} className='buttonFormMenu'>
+                    <p onClick={handleSideBar}>Lembretes</p>
+                </Link>
             </div>
         </div>
     )
